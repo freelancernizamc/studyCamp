@@ -1,10 +1,17 @@
+import { Helmet } from "react-helmet-async";
 
 
 const MyCollege = () => {
     return (
-        <div>
-            My College
-        </div>
+        <>
+            <Helmet>
+                <title>StudyCamp | My College</title>
+
+            </Helmet>
+            <div>
+                My College
+            </div>
+        </>
     );
 };
 

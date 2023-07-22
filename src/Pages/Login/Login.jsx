@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import Swal from 'sweetalert2';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     // const { signInWithGoogle, signIn } = useContext(AuthContext);
@@ -56,63 +57,68 @@ const Login = () => {
     };
 
     return (
-        <div className="bg-base-200">
-            <h1 className="text-5xl font-bold text-center mt-10">Login Please!</h1>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row">
-                    <div className="text-center lg:text-left md:w-1/2">
-                        <img src={login} alt="" />
-                    </div>
-                    <div className="card flex md:w-1/2 max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(handleFormSubmit)} className="card-body">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    {...register('email', { required: true })}
-                                    name="email"
-                                    placeholder="email"
-                                    className="input input-bordered"
-                                />
-                                {errors.email && <span className="text-rose-700">Your email is required</span>}
+        <>
+            <Helmet>
+                <title>studyCamp | Login</title>
+
+            </Helmet>
+            <div className="bg-base-200">
+                <h1 className="text-5xl font-bold text-center mt-10">Login Please!</h1>
+                <div className="hero min-h-screen bg-base-200">
+                    <div className="hero-content flex-col lg:flex-row">
+                        <div className="text-center lg:text-left md:w-1/2">
+                            <img src={login} alt="" />
+                        </div>
+                        <div className="card flex md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+                            <form onSubmit={handleSubmit(handleFormSubmit)} className="card-body">
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        {...register('email', { required: true })}
+                                        name="email"
+                                        placeholder="email"
+                                        className="input input-bordered"
+                                    />
+                                    {errors.email && <span className="text-rose-700">Your email is required</span>}
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Password</span>
+                                    </label>
+                                    <input
+                                        type="password"
+                                        {...register('password', { required: true })}
+                                        name="password"
+                                        placeholder="password"
+                                        className="input input-bordered"
+                                    />
+                                    {errors.password && <p className="text-rose-700">Password is required</p>}
+                                </div>
+                                <div className="form-control mt-6">
+                                    <input type="submit" value="Login" className="btn bg-[#972BE1] text-white" />
+                                </div>
+                            </form>
+                            <p className="text-center mb-2">
+                                <small>
+                                    New to Mindfulness School? <Link to="/signup" className="text-orange-700 font-semibold">Sign Up</Link>
+                                </small>
+                            </p>
+                            <div className="divider">OR</div>
+                            <div
+                                onClick={handleGoogleSignIn}
+                                className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
+                            >
+                                <FcGoogle size={32} />
+                                <p>Continue with Google</p>
                             </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input
-                                    type="password"
-                                    {...register('password', { required: true })}
-                                    name="password"
-                                    placeholder="password"
-                                    className="input input-bordered"
-                                />
-                                {errors.password && <p className="text-rose-700">Password is required</p>}
-                            </div>
-                            <div className="form-control mt-6">
-                                <input type="submit" value="Login" className="btn bg-[#972BE1] text-white" />
-                            </div>
-                        </form>
-                        <p className="text-center mb-2">
-                            <small>
-                                New to Mindfulness School? <Link to="/signup" className="text-orange-700 font-semibold">Sign Up</Link>
-                            </small>
-                        </p>
-                        <div className="divider">OR</div>
-                        <div
-                            onClick={handleGoogleSignIn}
-                            className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
-                        >
-                            <FcGoogle size={32} />
-                            <p>Continue with Google</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </>
     );
 };
 

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
 import SearchBar from "../SearchBar/SearchBar";
 
@@ -5,10 +6,16 @@ import SearchBar from "../SearchBar/SearchBar";
 
 const Home = () => {
     return (
-        <div className="bg-black text-white">
-            <Banner />
-            <SearchBar />
-        </div>
+        <>
+            <Helmet>
+                <title>StudyCamp | Home</title>
+
+            </Helmet>
+            <div className="bg-black text-white">
+                <Banner />
+                <SearchBar />
+            </div>
+        </>
     );
 };
 
