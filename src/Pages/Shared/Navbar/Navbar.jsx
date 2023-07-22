@@ -29,7 +29,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn bg-[#3420b4]">Book Now</a>
+                    <Link to='/login' className="btn bg-[#3420b4]">Login</Link>
                 </div>
             </div>
         </div>
