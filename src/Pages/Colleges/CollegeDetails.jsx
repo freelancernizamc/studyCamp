@@ -30,7 +30,7 @@ const CollegeDetails = () => {
                             <h1 className="text-5xl font-bold mb-4">{college_name}</h1>
                             <p>Ratings: {college_rating}</p>
                             <p className="my-2">Admission Date: {admission_date}</p>
-                            <button className="btn bg-[#9931E1] text-white hover:bg-[#272030]">Contact</button>
+                            <button className="btn bg-[#3420B4] text-white hover:bg-[#272030]">Contact</button>
                         </div>
                     </div>
                 </div>

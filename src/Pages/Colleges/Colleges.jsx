@@ -33,14 +33,14 @@ const Colleges = () => {
                 {data.map(Colleges => (
                     <div
                         key={Colleges._id}
-                        className="card w-96 bg-[#272030] text-white hover:bg-slate-300 hover:text-black mb-4 shadow-xl"
+                        className="card w-96 bg-[#22174B] text-white hover:bg-[#3420B4] hover:text-white mb-4 shadow-xl"
                     >
                         <figure className="px-10 pt-10">
                             <img src={Colleges.college_image} alt="College" className="rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">College Name: {Colleges.college_name}</h2>
-                            <p>Ratings: {Colleges.college_rating}</p>
+                            <p className="font-bold">Ratings: {Colleges.college_rating}</p>
                             <p>Admission Date: {Colleges.admission_date}</p>
                             <p>Number of Research: {Colleges.research_count}</p>
                             <div className="card-actions">

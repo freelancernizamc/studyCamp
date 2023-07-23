@@ -23,7 +23,7 @@ const BestColleges = () => {
             <h1 className='text-5xl font-bold text-center my-10'>Favourite Colleges of Students</h1>
             <div className="grid md:grid-cols-3 gap-4 ml-5">
                 {data.map((colleges) => (
-                    <div key={colleges._id} className="card w-96 bg-[#272030] text-white hover:bg-slate-300 hover:text-black shadow-xl">
+                    <div key={colleges._id} className="card w-96 bg-[#22174B] text-white hover:bg-[#3420B4] hover:text-white shadow-xl">
                         <figure className="px-10 pt-10">
                             <img src={colleges.college_image} alt="Shoes" className="rounded-xl" />
                         </figure>
@@ -35,7 +35,7 @@ const BestColleges = () => {
                             <p>Research History: {colleges.research_history}</p>
                             <p>Sports: {colleges.sports}</p>
                             <div className="card-actions">
-                                <Link to={`/collegedetails/${colleges._id}`} ><button className="btn bg-[#9931E1] text-white hover:bg-[#272030]">See Details</button></Link>
+                                <Link to={`/collegedetails/${colleges._id}`} ><button className="btn bg-[#3420B4] text-white hover:bg-[#272030]">See Details</button></Link>
                             </div>
                         </div>
                     </div>

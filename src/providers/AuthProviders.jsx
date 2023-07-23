@@ -39,35 +39,35 @@ const AuthProviders = ({ children }) => {
         });
     }
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
-            console.log('current user', currentUser);
+    // useEffect(() => {
+    //     const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    //         setUser(currentUser);
+    //         console.log('current user', currentUser);
 
-            // get and set token
-            if (currentUser) {
+    //         // get and set token
+    //         if (currentUser) {
 
-                axios.post('https://study-camp-server.vercel.app/jwt', { email: currentUser.email })
-                    .then(data => {
-                        if (data.data) {
-                            console.log(data.data.token)
-                            localStorage.setItem('access-token', data?.data?.token)
-                            setLoading(false);
-                        }
-                    })
+    //             axios.post('https://study-camp-server.vercel.app/jwt', { email: currentUser.email })
+    //                 .then(data => {
+    //                     if (data.data) {
+    //                         console.log(data.data.token)
+    //                         localStorage.setItem('access-token', data?.data?.token)
+    //                         setLoading(false);
+    //                     }
+    //                 })
 
-            }
-            else {
-                localStorage.removeItem('access-token')
-                setLoading(false);
-            }
+    //         }
+    //         else {
+    //             localStorage.removeItem('access-token')
+    //             setLoading(false);
+    //         }
 
 
-        });
-        return () => {
-            return unsubscribe();
-        }
-    }, [])
+    //     });
+    //     return () => {
+    //         return unsubscribe();
+    //     }
+    // }, [])
 
     const authInfo = {
         user,
