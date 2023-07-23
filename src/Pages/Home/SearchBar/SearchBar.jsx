@@ -25,7 +25,9 @@ const SearchBar = () => {
                         />
                     </svg>
                 </button>
-            </div>
+
+            </div>&emsp;
+            <h1 className="text-2xl font-bold">Choose Your College</h1>
         </div>
     );
 };

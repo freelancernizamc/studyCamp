@@ -1,4 +1,4 @@
-// import { useContext } from 'react';
+import { useContext } from 'react';
 import login from '../../assets/images/login.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -6,9 +6,10 @@ import { FcGoogle } from 'react-icons/fc';
 import Swal from 'sweetalert2';
 import { toast } from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../../providers/AuthProviders';
 
 const Login = () => {
-    // const { signInWithGoogle, signIn } = useContext(AuthContext);
+    const { signInWithGoogle, signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const {
@@ -98,7 +99,7 @@ const Login = () => {
                                     {errors.password && <p className="text-rose-700">Password is required</p>}
                                 </div>
                                 <div className="form-control mt-6">
-                                    <input type="submit" value="Login" className="btn bg-[#972BE1] text-white" />
+                                    <input type="submit" value="Login" className="btn bg-[#3420b4] text-white" />
                                 </div>
                             </form>
                             <p className="text-center mb-2">

@@ -5,14 +5,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc';
-// import { useContext } from 'react';
-// import { AuthContext } from '../../providers/AuthProviders';
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProviders';
 import { Helmet } from 'react-helmet-async';
 
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    // const { createUser, updateUserProfile, signInWithGoogle, setLoading } = useContext(AuthContext);
+    const { createUser, updateUserProfile, signInWithGoogle, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
@@ -60,7 +60,7 @@ const SignUp = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle().then(result => {
             const saveUser = { name: result.user.displayName, email: result.user.email, photoURL: result.user.photoURL }
-            fetch('https://assignment-12-server-lyart.vercel.app/users', {
+            fetch('http://localhost:5000/users', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -155,7 +155,7 @@ const SignUp = () => {
 
                                 </div>
                                 <div className="form-control mt-6">
-                                    <input type="submit" value="Sign Up" className="btn bg-[#972BE1] text-white" />
+                                    <input type="submit" value="Sign Up" className="btn bg-[#3420b4] text-white" />
                                 </div>
                             </form>
                             <p className='text-center mb-2'><small>Have an Account? <Link to='/login' className='text-orange-700 font-semibold'>Please Login</Link></small></p>
