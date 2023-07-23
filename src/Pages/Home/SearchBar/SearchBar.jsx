@@ -2,7 +2,7 @@
 
 const SearchBar = () => {
     return (
-        <div className="flex items-center ml-[500px]">
+        <div className="flex items-center ml-[400px]">
             <div className="flex space-x-1">
                 <input
                     type="text"
@@ -27,7 +27,7 @@ const SearchBar = () => {
                 </button>
 
             </div>&emsp;
-            <h1 className="text-2xl font-bold">Choose Your College</h1>
+            <h1 className="text-2xl font-bold">Search Your Desired College</h1>
         </div>
     );
 };

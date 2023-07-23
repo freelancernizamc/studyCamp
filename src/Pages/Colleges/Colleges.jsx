@@ -44,8 +44,8 @@ const Colleges = () => {
                             <p>Admission Date: {Colleges.admission_date}</p>
                             <p>Number of Research: {Colleges.research_count}</p>
                             <div className="card-actions">
-                                <Link to={`/instractordetails/${Colleges._id}`}>
-                                    <button className="btn bg-[#9931E1] text-white hover:bg-[#272030]">
+                                <Link to={`/collegedetails/${Colleges._id}`}>
+                                    <button className="btn bg-[#3420B4] text-white hover:bg-[#31a31a]">
                                         See Details
                                     </button>
                                 </Link>
