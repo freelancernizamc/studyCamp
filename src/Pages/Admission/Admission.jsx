@@ -7,7 +7,7 @@ const Admission = () => {
     const { isLoading, error, isError, data } = useQuery({
         queryKey: ["repoData"],
         queryFn: () =>
-            fetch("http://localhost:5000/colleges").then(
+            fetch("https://study-camp-server.vercel.app/colleges").then(
                 (res) => res.json()
             )
     });

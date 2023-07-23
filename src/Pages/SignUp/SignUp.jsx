@@ -26,7 +26,7 @@ const SignUp = () => {
                     .then(() => {
                         // console.log('User profile info updated')
                         const saveUser = { name: data.name, email: data.email, photoURL: data.photoURL, role: 'student' }
-                        fetch('https://assignment-12-server-lyart.vercel.app/users', {
+                        fetch('https://study-camp-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -60,7 +60,7 @@ const SignUp = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle().then(result => {
             const saveUser = { name: result.user.displayName, email: result.user.email, photoURL: result.user.photoURL }
-            fetch('http://localhost:5000/users', {
+            fetch('https://study-camp-server.vercel.app/users', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

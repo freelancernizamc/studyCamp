@@ -6,7 +6,7 @@ const BestColleges = () => {
     const { isLoading, isError, error, data } = useQuery({
         queryKey: ['colleges'], // Update the query key to match the server-side query
         queryFn: () =>
-            fetch('http://localhost:5000/best-colleges?limit=3') // Add a limit parameter to fetch only 6 instructors
+            fetch('https://study-camp-server.vercel.app/best-colleges?limit=3') // Add a limit parameter to fetch only 6 instructors
                 .then((res) => res.json()),
     });
 

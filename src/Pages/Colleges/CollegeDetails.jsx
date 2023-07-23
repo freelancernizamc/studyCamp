@@ -7,7 +7,7 @@ const CollegeDetails = () => {
     const [colleges, setColleges] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/colleges/${_id}`)
+        fetch(`https://study-camp-server.vercel.app/users/colleges/${_id}`)
             .then((res) => res.json())
             .then((data) => setColleges(data))
             .catch((error) => console.error(error));
@@ -39,11 +39,7 @@ const CollegeDetails = () => {
 
             <h2 className="text-3xl text-center my-10">College Information</h2>
             <div className="grid md:grid-cols-3 gap-4">
-                {/* {data.map(Colleges => (
-                    <div
-                        key={Colleges._id}
-                        className="card w-96 bg-[#272030] text-white hover:bg-slate-300 hover:text-black mb-4 shadow-xl"
-                    > */}
+
                 <figure className="px-10 pt-10">
                     <img src={college_image} alt="College" className="rounded-xl" />
                 </figure>
