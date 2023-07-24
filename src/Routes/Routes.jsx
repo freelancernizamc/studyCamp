@@ -11,12 +11,15 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import CollegeDetails from "../Pages/Colleges/CollegeDetails";
 import AdmissionForm from "../Pages/Admission/AdmissionForm";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage />,
+
 
         children: [
             {
