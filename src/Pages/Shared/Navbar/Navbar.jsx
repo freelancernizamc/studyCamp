@@ -26,17 +26,19 @@ const Navbar = () => {
                             <li><Link to='/colleges'>Colleges</Link></li>
                             <li><Link to='/admission'>Admission</Link></li>
                             <li><Link to='/mycolleges'>My Colleges</Link></li>
+                            <li><Link to='/contact'>Contact Us</Link></li>
 
                         </ul>
                     </div>
                     <a className="btn btn-ghost normal-case md:text-3xl">Study<span className="text-[#a59be5]">Camp</span></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 font-bold">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/colleges'>Colleges</Link></li>
                         <li><Link to='/admission'>Admission</Link></li>
                         <li><Link to='/mycollege'>My College</Link></li>
+                        <li><Link to='/contact'>Contact Us</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
