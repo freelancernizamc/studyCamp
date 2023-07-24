@@ -20,8 +20,8 @@ const BestColleges = () => {
 
     return (
         <>
-            <h1 className='text-5xl font-bold text-center my-10'>Favourite Colleges of Students</h1>
-            <div className="grid md:grid-cols-3 gap-4 ml-5">
+            <h1 className='md:text-5xl font-bold text-center my-20 underline'>Favourite Colleges of Students</h1>
+            <div className="grid md:grid-cols-3 gap-4 ml-5 animate-pulse">
                 {data.map((colleges) => (
                     <div key={colleges._id} className="card w-96 bg-[#22174B] text-white hover:bg-[#3420B4] hover:text-white shadow-xl">
                         <figure className="px-10 pt-10">

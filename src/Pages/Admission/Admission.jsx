@@ -38,7 +38,7 @@ const Admission = () => {
 
                 </div>
             </div>
-            <marquee className="text-3xl bg-gray-900 text-purple-300">To take Admission Click the below Link of your Desired College</marquee>
+            <marquee className="text-3xl bg-gray-900 text-purple-300">To take Admission Please Click the below Link of your Desired College</marquee>
             <h1 className="text-5xl ml-20 underline font-bold my-10">College Name</h1>
             {data.map(Colleges => (
                 <div

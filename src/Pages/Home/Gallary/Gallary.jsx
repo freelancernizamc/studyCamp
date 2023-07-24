@@ -48,6 +48,16 @@ const Gallary = () => {
             height: 212,
         },
         {
+            src: "https://i.ibb.co/cy21z8p/banner1.jpg",
+            width: 320,
+            height: 212,
+        },
+        {
+            src: "https://i.ibb.co/FXbbW7P/banner3.png",
+            width: 320,
+            height: 212,
+        },
+        {
             src: "https://i.ibb.co/7XKRdnT/gallary8.jpg",
             width: 320,
             height: 212,
@@ -55,9 +65,9 @@ const Gallary = () => {
     ];
     return (
         <div>
-            <h1 className='text-5xl text-center font-bold my-10'>Gallary</h1>
+            <h1 className='md:text-5xl text-center font-bold my-20 underline'>Gallary</h1>
 
-            <div className='ml-10'>
+            <div className='ml-5'>
                 <Gallery images={images} />
             </div>
 

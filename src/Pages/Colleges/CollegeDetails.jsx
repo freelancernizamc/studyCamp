@@ -45,15 +45,15 @@ const CollegeDetails = () => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">College Name: {college_name}</h2>
-                    <p>Ratings: {college_rating}</p>
+                    <p className='font-bold'>Ratings: {college_rating}</p>
                     <p>Admission Date: {admission_date}</p>
                     <p>Number of Research: {research_count}</p>
                     <p>Events: {events}</p>
                     <p>Research History: {research_history}</p>
                     <p>Sports: {sports}</p>
                     <div className="card-actions">
-                        <Link to={`/collegedetails/${_id}`}>
-                            <button className="btn bg-[#9931E1] text-white hover:bg-[#272030]">
+                        <Link to='/admissionform'>
+                            <button className="btn bg-[#3420B4] text-white hover:bg-[#272030]">
                                 Take Admission Now
                             </button>
                         </Link>

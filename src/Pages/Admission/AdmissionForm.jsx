@@ -6,6 +6,7 @@ const AdmissionForm = ({ onFormSubmit }) => {
     const [studentData, setStudentData] = useState({
         image: '',
         studentName: '',
+        collegeName: '',
         subject: '',
         email: '',
         phone: '',
@@ -27,6 +28,7 @@ const AdmissionForm = ({ onFormSubmit }) => {
         const newStudentData = {
             image: '',
             studentName: '',
+            collegeName: '',
             subject: '',
             email: '',
             phone: '',
@@ -63,6 +65,16 @@ const AdmissionForm = ({ onFormSubmit }) => {
                                     type="text"
                                     name="studentName"
                                     value={studentData.studentName}
+                                    onChange={handleChange}
+                                    className="border rounded-md px-2 py-1 w-full"
+                                />
+                            </label>
+                            <label className="block">
+                                College Name:
+                                <input
+                                    type="text"
+                                    name="collegeName"
+                                    value={studentData.collegeName}
                                     onChange={handleChange}
                                     className="border rounded-md px-2 py-1 w-full"
                                 />
@@ -121,7 +133,7 @@ const AdmissionForm = ({ onFormSubmit }) => {
                             className="border rounded-md px-2 py-1 w-full"
                         />
                     </label>
-                    <button type="submit" className="bg-[#9931E1] text-white px-4 py-2 rounded-md">
+                    <button type="submit" className="bg-[#3420B4] text-white hover:bg-green-700 px-4 py-2 rounded-md">
                         Submit
                     </button>
                 </form>
