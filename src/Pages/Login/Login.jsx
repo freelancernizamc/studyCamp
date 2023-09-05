@@ -3,13 +3,14 @@ import login from '../../assets/images/login.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import { toast } from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../providers/AuthProviders';
 
 const Login = () => {
-    const { signInWithGoogle, signIn } = useContext(AuthContext);
+    const { signInWithGoogle, signIn, signInWithGithub } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const {
@@ -47,6 +48,18 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
+            .then((result) => {
+                console.log(result.user);
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                console.log(err.message);
+                toast.error(err.message);
+            });
+    };
+
+    const handleGithubSignIn = () => {
+        signInWithGithub()
             .then((result) => {
                 console.log(result.user);
                 navigate(from, { replace: true });
@@ -114,6 +127,13 @@ const Login = () => {
                             >
                                 <FcGoogle size={32} />
                                 <p>Continue with Google</p>
+                            </div>
+                            <div
+                                onClick={handleGithubSignIn}
+                                className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
+                            >
+                                <FaGithub size={32} />
+                                <p>Continue with Github</p>
                             </div>
                         </div>
                     </div>

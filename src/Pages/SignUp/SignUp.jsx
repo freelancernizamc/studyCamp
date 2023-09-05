@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
 import { Helmet } from 'react-helmet-async';
@@ -12,7 +13,7 @@ import { Helmet } from 'react-helmet-async';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createUser, updateUserProfile, signInWithGoogle, setLoading } = useContext(AuthContext);
+    const { createUser, updateUserProfile, signInWithGoogle, signInWithGithub, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
@@ -59,6 +60,26 @@ const SignUp = () => {
     // Handle Google signIn
     const handleGoogleSignIn = () => {
         signInWithGoogle().then(result => {
+            const saveUser = { name: result.user.displayName, email: result.user.email, photoURL: result.user.photoURL }
+            fetch('https://study-camp-server.vercel.app/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(saveUser)
+            })
+
+            console.log(result.user)
+            navigate(from, { replace: true });
+        })
+            .catch(err => {
+                setLoading(false);
+                console.log(err.message)
+                toast.error(err.message)
+            })
+    }
+    const handleGithubSignIn = () => {
+        signInWithGithub().then(result => {
             const saveUser = { name: result.user.displayName, email: result.user.email, photoURL: result.user.photoURL }
             fetch('https://study-camp-server.vercel.app/users', {
                 method: 'POST',
@@ -164,6 +185,11 @@ const SignUp = () => {
                                 <FcGoogle size={32} />
 
                                 <p>Continue with Google</p>
+                            </div>
+                            <div onClick={handleGithubSignIn} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+                                <FaGithub size={32} />
+
+                                <p>Continue with Github</p>
                             </div>
                         </div>
                     </div>
