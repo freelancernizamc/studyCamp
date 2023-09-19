@@ -1,6 +1,9 @@
-import React from 'react';
+
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const BestColleges = () => {
     const { isLoading, isError, error, data } = useQuery({
@@ -10,6 +13,10 @@ const BestColleges = () => {
                 .then((res) => res.json()),
     });
 
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -18,12 +25,14 @@ const BestColleges = () => {
         return <div>Error: {error.message}</div>;
     }
 
+
+
     return (
         <>
             <h1 className='md:text-5xl font-bold text-center my-20 underline'>Favourite Colleges of Students</h1>
             <div className="grid md:grid-cols-3 gap-4 ml-5 animate-pulse">
                 {data.map((colleges) => (
-                    <div key={colleges._id} className="card w-96 bg-[#22174B] text-white hover:bg-[#3420B4] hover:text-white shadow-xl">
+                    <div key={colleges._id} className="card w-96 bg-[#22174B] text-white hover:bg-[#3420B4] hover:text-white shadow-xl" data-aos="flip-left" data-aos-duration="3000">
                         <figure className="px-10 pt-10">
                             <img src={colleges.college_image} alt="Shoes" className="rounded-xl" />
                         </figure>

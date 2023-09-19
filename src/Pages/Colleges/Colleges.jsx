@@ -2,6 +2,9 @@ import { Helmet } from "react-helmet-async";
 import CollegeBanner from "./CollegeBanner";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const Colleges = () => {
@@ -13,6 +16,10 @@ const Colleges = () => {
             )
     });
 
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -20,6 +27,9 @@ const Colleges = () => {
     if (isError) {
         return <div>Error: {error.message}</div>;
     }
+
+
+
     return (
         <>
             <Helmet>
@@ -33,7 +43,7 @@ const Colleges = () => {
                 {data.map(Colleges => (
                     <div
                         key={Colleges._id}
-                        className="card w-96 bg-[#22174B] text-white hover:bg-[#3420B4] hover:text-white mb-4 shadow-xl"
+                        className="card w-96 bg-[#22174B] text-white hover:bg-[#3420B4] hover:text-white mb-4 shadow-xl" data-aos="flip-left" data-aos-duration="3000"
                     >
                         <figure className="px-10 pt-10">
                             <img src={Colleges.college_image} alt="College" className="rounded-xl" />
