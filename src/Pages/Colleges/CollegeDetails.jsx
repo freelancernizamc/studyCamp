@@ -52,7 +52,7 @@ const CollegeDetails = () => {
                     <p>Research History: {research_history}</p>
                     <p>Sports: {sports}</p>
                     <div className="card-actions">
-                        <Link to='/admissionform'>
+                    <Link to={`/admissionform/${colleges._id}`}>
                             <button className="btn bg-[#3420B4] text-white hover:bg-[#272030]">
                                 Take Admission Now
                             </button>

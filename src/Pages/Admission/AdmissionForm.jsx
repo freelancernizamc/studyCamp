@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 
 const AdmissionForm = ({ onFormSubmit }) => {
+    const collegeData = useLoaderData();
     const navigate = useNavigate();
     const [studentData, setStudentData] = useState({
         image: '',
@@ -43,6 +44,17 @@ const AdmissionForm = ({ onFormSubmit }) => {
     };
     return (
         <div>
+            {/* <img src={collegeData.college_image} alt='banner'/> */}
+            <div className="hero min-h-screen" style={{ backgroundImage: `url(${collegeData.college_image})` }}>
+    <div className="hero-overlay bg-opacity-60"></div>
+    <div className="hero-content text-center text-neutral-content">
+        <div className="max-w-md">
+           <h1 className='text-7xl font-bold text-white'> {collegeData.college_name}</h1>
+            <h1 className="mb-5 text-5xl font-bold text-indigo-300">Admission</h1>
+        </div>
+    </div>
+</div>
+
             <div className="max-w-lg mx-auto">
 
                 <div><h2 className="text-3xl font-bold my-10 bg-[#272030] text-white text-center">Admission Form</h2></div>
@@ -74,7 +86,7 @@ const AdmissionForm = ({ onFormSubmit }) => {
                                 <input
                                     type="text"
                                     name="collegeName"
-                                    value={studentData.collegeName}
+                                  defaultValue={collegeData.college_name}
                                     onChange={handleChange}
                                     className="border rounded-md px-2 py-1 w-full"
                                 />

@@ -41,8 +41,9 @@ export const router = createBrowserRouter([
                 element: <Admission />
             },
             {
-                path: "/admissionform",
-                element: <PrivateRoute><AdmissionForm /></PrivateRoute>
+                path: "/admissionform/:id",
+                element: <PrivateRoute><AdmissionForm /></PrivateRoute>,
+                loader:({params})=>fetch(`https://study-camp-server.vercel.app/users/colleges/${params.id}`)
             },
             {
                 path: "/mycollege",

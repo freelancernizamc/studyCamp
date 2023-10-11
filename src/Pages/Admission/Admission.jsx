@@ -47,7 +47,7 @@ const Admission = () => {
                     className="card w-96 bg-[#272030] text-white hover:bg-slate-300 hover:text-black mb-4 shadow-xl"
                 >
 
-                    <Link to="/admissionform" className="text-3xl ml-20">{Colleges.college_name}</Link>
+                    <Link to={`/admissionform/${Colleges._id}`} className="text-3xl ml-20">{Colleges.college_name}</Link>
                 </div>
             ))}
 
