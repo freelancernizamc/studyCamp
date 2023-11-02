@@ -1,47 +1,53 @@
-import React, { useState } from 'react';
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
-const AdmissionForm = ({ onFormSubmit }) => {
+
+const AdmissionForm = () => {
+
+    const {user} = useContext(AuthContext)
     const collegeData = useLoaderData();
-    const navigate = useNavigate();
-    const [studentData, setStudentData] = useState({
-        image: '',
-        studentName: '',
-        collegeName: '',
-        subject: '',
-        email: '',
-        phone: '',
-        date: '',
-        address: '',
-    });
+    const admitClg = useLoaderData()
+ console.log(admitClg);
+    const handleAdmit= event =>{
+        event.preventDefault()
+        const form = event.target;
+        const name= form.name.value ;
+        const email = form.email.value ;
+        const clgName = form.clgName.value ;
+        const clgId = form.clgId.value ;
+        const subject = form.subject.value ;
+        const phone = form.phoneNum.value ;
+        const address = form.address.value ;
+        const birth = form.birth.value ;
+        const image = form.image.value ;
+        const candidateInfo = {name ,email,subject,clgName,clgId ,phone,address,birth,image}
+        console.log(candidateInfo);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setStudentData((prevData) => ({ ...prevData, [name]: value }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        // Call the function passed via props to handle form submission
-        onFormSubmit(studentData);
-
-        const newStudentData = {
-            image: '',
-            studentName: '',
-            collegeName: '',
-            subject: '',
-            email: '',
-            phone: '',
-            date: '',
-            address: '',
-        };
-
-        setStudentData(newStudentData);
-        navigate('/mycollege');
-
-
-    };
+        fetch("https://study-camp-server.vercel.app/candidate" , {
+            method:"POST" ,
+            headers:{
+               "content-type":"application/json"
+            },
+            body:JSON.stringify(candidateInfo)
+   })
+   .then(res=> res.json())
+   .then(data=>{
+    console.log(data);
+   if(data.insertedId){
+    Swal.fire({
+        title: 'Admission Form Submitted Successfully!',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+   }
+   })
+    }
     return (
         <div>
             {/* <img src={collegeData.college_image} alt='banner'/> */}
@@ -58,97 +64,155 @@ const AdmissionForm = ({ onFormSubmit }) => {
             <div className="max-w-lg mx-auto">
 
                 <div><h2 className="text-3xl font-bold my-10 bg-[#272030] text-white text-center">Admission Form</h2></div>
-                <form onSubmit={handleSubmit} className="space-y-4 shadow-md">
-                    <div className="grid grid-cols-2 gap-4">
-                        <div>
-                            <label className="block">
-                                Picture URL:
-                                <input
-                                    type="text"
-                                    name="image"
-                                    value={studentData.image}
-                                    onChange={handleChange}
-                                    className="border rounded-md px-2 py-1 w-full"
-                                />
-                            </label>
-                            <label className="block">
-                                Candidate Name:
-                                <input
-                                    type="text"
-                                    name="studentName"
-                                    value={studentData.studentName}
-                                    onChange={handleChange}
-                                    className="border rounded-md px-2 py-1 w-full"
-                                />
-                            </label>
-                            <label className="block">
-                                College Name:
-                                <input
-                                    type="text"
-                                    name="collegeName"
-                                  defaultValue={collegeData.college_name}
-                                    onChange={handleChange}
-                                    className="border rounded-md px-2 py-1 w-full"
-                                />
-                            </label>
-                            <label className="block">
-                                Subject:
-                                <input
-                                    type="text"
-                                    name="subject"
-                                    value={studentData.subject}
-                                    onChange={handleChange}
-                                    className="border rounded-md px-2 py-1 w-full"
-                                />
-                            </label>
-                            <label className="block">
-                                Candidate Email:
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={studentData.email}
-                                    onChange={handleChange}
-                                    className="border rounded-md px-2 py-1 w-full"
-                                />
-                            </label>
-                        </div>
-                        <div>
-                            <label className="block">
-                                Candidate Phone numbe:
-                                <input
-                                    type="number"
-                                    name="phone"
-                                    value={studentData.phone}
-                                    onChange={handleChange}
-                                    className="border rounded-md px-2 py-1 w-full"
-                                />
-                            </label>
-                            <label className="block">
-                                Date of Birth:
-                                <input
-                                    type="date"
-                                    name="date"
-                                    value={studentData.date}
-                                    onChange={handleChange}
-                                    className="border rounded-md px-2 py-1 w-full"
-                                />
-                            </label>
+                
+                <form onSubmit={handleAdmit} className="space-y-4 shadow-md">
+                    <h1 className="text-3xl/10  font-bold bg-gradient-to-br from-purple-600  to-pink-600 inline-block text-transparent bg-clip-text mx-auto">
+                     Admission Now!!
+                    </h1>
+                    <div className="flex flex-wrap gap-4">
 
-                        </div>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Candidate Name</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        defaultValue={user?.displayName}
+                       
+                        className="input input-bordered w-72"
+
+                        required
+                      />
                     </div>
-                    <label className="block">
-                        Present Address:
-                        <textarea
-                            name="address"
-                            value={studentData.address}
-                            onChange={handleChange}
-                            className="border rounded-md px-2 py-1 w-full"
-                        />
-                    </label>
-                    <button type="submit" className="bg-[#3420B4] text-white hover:bg-green-700 px-4 py-2 rounded-md">
+                    
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Candidate Email</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="email"
+                       defaultValue={user?.email}
+                        className="input input-bordered w-72"
+                        required
+                      />
+                    </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-4">
+ 
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Subject</span>
+                      </label>
+                      <select name="subject" className="select select-bordered w-72 max-w-xs">
+                         <option disabled selected>Choose the Subject</option>
+                          <option>Math</option>
+                         <option>English</option>
+                         <option>Physics</option>
+                         <option>Chemistry</option>
+                        </select>
+                    </div>
+                    
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">College Name</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="clgName"
+                        defaultValue={collegeData.college_name}
+                        className="input input-bordered w-72"
+                        required
+                      />
+                    </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-4">
+
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">College Id</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="clgId"
+                        defaultValue={admitClg?._id}
+                        className="input input-bordered w-72"
+                        required
+                      />
+                    </div>
+
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Address</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="address"
+                        placeholder="address"
+                        className="input input-bordered w-72"
+                        required
+                      />
+                    </div>
+
+                   
+</div>
+
+<div className="flex flex-wrap gap-4 ">
+<div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Date of Birth</span>
+                      </label>
+                      <input
+                        type="date"
+                        name="birth"
+                        placeholder="date of birth"
+                        className="input input-bordered w-72"
+                        required
+                      />
+                    </div>
+
+
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Phone Number</span>
+                      </label>
+                      <input
+                        type="number"
+                        name="phoneNum"
+                        placeholder="Phone Number"
+                        className="input input-bordered w-72"
+                        required
+                      />
+                    </div>
+                    <div className="form-control">
+
+                      <label className="label">
+                        <span className="label-text">Image Url</span>
+                      </label>
+                      <input
+                        type="url"
+                        name="image"
+                        defaultValue={collegeData?.college_image}
+                        className="input input-bordered w-72"
+                        required
+                      />
+                    </div>
+</div>
+
+                    
+
+                   
+                    <div className="form-control mt-6">
+                      <button className="btn mx-auto sm:w-1/2 bg-purple-500 border-0 hover:bg-pink-600 ">
                         Submit
-                    </button>
-                </form>
+                      </button>
+                    </div>
+                   
+                   
+                  </form>
             </div>
         </div>
     );

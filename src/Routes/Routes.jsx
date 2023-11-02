@@ -14,6 +14,7 @@ import AdmissionForm from "../Pages/Admission/AdmissionForm";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import Contact from "../Pages/Contact/Contact";
+import Details from "../Pages/Shared/Details/Details";
 
 
 export const router = createBrowserRouter([
@@ -47,8 +48,14 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/mycollege",
-                element: <PrivateRoute><MyCollege></MyCollege></PrivateRoute>
+                element: <PrivateRoute><MyCollege></MyCollege></PrivateRoute>,
+                loader:({params})=>fetch(`https://study-camp-server.vercel.app/users/colleges/${params.id}`)
             },
+            {
+                path: "/details/:id",
+                element:<PrivateRoute><Details/></PrivateRoute>,
+                loader:({params}) =>fetch(`http://localhost:5000/colleges/${params.id}`)
+              },
             {
                 path: "/contact",
                 element: <Contact />
