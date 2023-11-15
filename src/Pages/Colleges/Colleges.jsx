@@ -53,6 +53,7 @@ const Colleges = () => {
                             <p className="font-bold">Ratings: {Colleges.college_rating}</p>
                             <p>Admission Date: {Colleges.admission_date}</p>
                             <p>Number of Research: {Colleges.research_count}</p>
+                            <p>Tuition Fee: {Colleges.fee}</p>
                             <div className="card-actions">
                                 <Link to={`/collegedetails/${Colleges._id}`}>
                                     <button className="btn bg-[#3420B4] text-white hover:bg-[#100831]">
