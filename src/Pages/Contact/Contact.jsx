@@ -3,14 +3,14 @@ import { Helmet } from "react-helmet-async";
 import emailjs from "@emailjs/browser";
 
 const images = [
-  "/src/assets/images/Contact.jpg",
-  "/src/assets/images/Contact2.jpg",
-  "/src/assets/images/contactus.gif",
-  "/src/assets/images/Contact.jpg",
-  "/src/assets/images/Contact2.jpg",
-  "/src/assets/images/contactus.gif",
-  "/src/assets/images/Contact.jpg",
-  "/src/assets/images/Contact2.jpg",
+  "/Contact.jpg",
+  "/Contact2.jpg",
+  "/contactus.gif",
+  "/Contact.jpg",
+  "/Contact2.jpg",
+  "/contactus.gif",
+  "/Contact.jpg",
+  "/Contact2.jpg",
 ];
 
 const Contact = () => {
